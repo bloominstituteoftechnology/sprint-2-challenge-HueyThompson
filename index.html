@@ -7,31 +7,109 @@
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
 
+      var answer1;
+
+      if(profile.active === true && reason !== undefined)
+      {
+        profile.active = false;
+        profile.reason = reason;
+        answer1 = profile;
+      }
+      else if(profile.active === false)
+      {
+          profile.active = true;
+          delete profile.reason;
+          answer1 = profile;
+      }
+      else if(profile.active === true && reason === undefined)
+      {
+        answer1 = "confirm status manually";
+      }
+
+      return answer1;
     }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
 
+      var answer2;
+
+      if((x < 1 || x > 3) || (y < 1 || y > 3))
+      {
+        answer2 = "invalid coordinates";
+      }
+      else if(grid[y-1][x-1] !== "🟥")
+      {
+        answer2 = "🟦 🥳";
+      }
+      else
+      {
+        answer2 = "🟥 💀";
+      }
+
+      return answer2;
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+      var answer3;
 
+      var obj2 = obj
+      for(let prop in obj2)
+      {
+        if(prop.length > 9)
+        {
+          answer3 = "shorten all prop names to 9 chars or less";
+          return answer3;
+        }
+        else if(obj2[prop] === null)
+        {
+          delete obj2[prop];
+        }
+        else if(obj2[prop] === 0)
+        {
+          obj2[prop] = false;
+          
+        }
+        else if(obj2[prop] === 1)
+        {
+          obj2[prop] = true;
+        }
+      }
+      return obj2;
     }
+
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (text === "" || forbidden.length === 0) {
+        return text;
+    }
 
+    let words = text.split(" ");
+
+    var x = "x"
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        if(forbidden.includes(word)) {
+            words[i] = x.repeat(word.length);
+        }
+    }
+   
+    words = words.join(" ");
+    return words;
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
+      var answer5;
 
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
 
+      var answer6;
     }
 
     // 🧪 DO NOT make any changes below this line ===================
